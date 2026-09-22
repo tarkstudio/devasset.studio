@@ -203,7 +203,7 @@
    */
   function updateIosUi() {
     const previewCanvas = document.getElementById('ios-master-canvas');
-    const alphaBadge = document.getElementById('ios-alpha-badge');
+    const alphaBadge = document.getElementById('ios-alpha-status');
     const suiteGrid = document.getElementById('ios-suite-grid');
 
     if (previewCanvas && state.appIconBlobs['AppIcon-1024x1024@1x.png']) {
@@ -257,7 +257,7 @@
 
     if (state.flattenMode === 'dominant') {
       state.flattenColor = extractDominantColor(img);
-      const colorInput = document.getElementById('ios-flatten-color');
+      const colorInput = document.getElementById('ios-bg-color');
       if (colorInput) colorInput.value = state.flattenColor;
     }
 
@@ -567,19 +567,21 @@ Note: Transparency has been 100% flattened to 0% alpha to guarantee rejection-fr
 
   // Bind UI Events
   function initIosUi() {
-    const uploadInput = document.getElementById('ios-icon-upload');
-    const uploadZone = document.getElementById('ios-upload-zone');
+    const uploadInput = document.getElementById('ios-master-upload');
     const btnSample = document.getElementById('btn-ios-sample');
-    const colorInput = document.getElementById('ios-flatten-color');
+    const colorInput = document.getElementById('ios-bg-color');
     const btnDownloadZip = document.getElementById('btn-download-ios-zip');
+    const btnToggleJson = document.getElementById('btn-toggle-json');
+    const jsonBox = document.getElementById('ios-contents-json-box');
+    const jsonCode = document.getElementById('ios-contents-json-code');
 
     // Mockup controls
-    const presetSelect = document.getElementById('ios-mockup-preset');
-    const headlineInput = document.getElementById('ios-mockup-headline');
-    const subheadInput = document.getElementById('ios-mockup-subhead');
-    const bgSelect = document.getElementById('ios-mockup-bg');
-    const frameSelect = document.getElementById('ios-mockup-frame');
-    const mockupUpload = document.getElementById('ios-mockup-upload');
+    const presetSelect = document.getElementById('ios-preset-select');
+    const headlineInput = document.getElementById('ios-headline-input');
+    const subheadInput = document.getElementById('ios-subhead-input');
+    const bgSelect = document.getElementById('ios-theme-select');
+    const islandToggle = document.getElementById('ios-island-toggle');
+    const mockupUpload = document.getElementById('ios-screenshot-upload');
     const btnDownloadMockup = document.getElementById('btn-download-ios-mockup');
 
     if (uploadInput) {
@@ -590,7 +592,12 @@ Note: Transparency has been 100% flattened to 0% alpha to guarantee rejection-fr
         reader.onload = function (evt) {
           const img = new Image();
           img.onload = function () {
-            processIosMaster(img);
+            processIosMaster(img).catch(function (error) {
+              console.error('[DevAsset Studio] iOS master processing failed:', error);
+            });
+          };
+          img.onerror = function () {
+            console.error('[DevAsset Studio] Unable to decode the selected iOS master image.');
           };
           img.src = evt.target.result;
         };
@@ -614,6 +621,17 @@ Note: Transparency has been 100% flattened to 0% alpha to guarantee rejection-fr
 
     if (btnDownloadZip) {
       btnDownloadZip.addEventListener('click', exportIosZip);
+    }
+
+    if (btnToggleJson && jsonBox && jsonCode) {
+      jsonCode.textContent = generateContentsJson();
+      btnToggleJson.setAttribute('aria-expanded', 'false');
+      btnToggleJson.addEventListener('click', function () {
+        const isHidden = jsonBox.classList.toggle('hidden');
+        btnToggleJson.setAttribute('aria-expanded', String(!isHidden));
+        const icon = btnToggleJson.querySelector('[data-lucide="chevron-down"]');
+        if (icon) icon.classList.toggle('rotate-180', !isHidden);
+      });
     }
 
     // Mockup event bindings
@@ -641,9 +659,9 @@ Note: Transparency has been 100% flattened to 0% alpha to guarantee rejection-fr
         scheduleIosMockupRender();
       });
     }
-    if (frameSelect) {
-      frameSelect.addEventListener('change', function (e) {
-        state.mockupFrame = e.target.value;
+    if (islandToggle) {
+      islandToggle.addEventListener('change', function (e) {
+        state.mockupFrame = e.target.checked ? 'dynamic_island' : 'notch';
         scheduleIosMockupRender();
       });
     }
