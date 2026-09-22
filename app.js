@@ -345,6 +345,72 @@
       amazon: document.getElementById('ecosystem-view-amazon'),
     };
 
+    const ecosystemSeo = {
+      google: {
+        hash: '#google-play',
+        title: 'Google Play Asset Generator | DevAsset Studio',
+        description: 'Create Google Play compliant app icons, feature graphics, screenshots, metadata, and downloadable store bundles in your browser with DevAsset Studio.',
+        schemaName: 'Google Play Asset Generator'
+      },
+      apple: {
+        hash: '#apple-ios',
+        title: 'Apple iOS App Store Asset Generator | DevAsset Studio',
+        description: 'Prepare Apple iOS App Store icons, Xcode AppIcon assets, screenshots, metadata, and downloadable bundles locally in your browser with DevAsset Studio.',
+        schemaName: 'Apple iOS App Store Asset Generator'
+      },
+      samsung: {
+        hash: '#samsung-galaxy',
+        title: 'Samsung Galaxy Store Asset Generator | DevAsset Studio',
+        description: 'Generate Samsung Galaxy Store icons, One UI assets, banners, screenshots, metadata, and downloadable store bundles locally with DevAsset Studio.',
+        schemaName: 'Samsung Galaxy Store Asset Generator'
+      },
+      amazon: {
+        hash: '#amazon-appstore',
+        title: 'Amazon Appstore Asset Generator | DevAsset Studio',
+        description: 'Create Amazon Appstore icons, promotional graphics, Fire tablet screenshots, metadata, and downloadable store bundles in your browser with DevAsset Studio.',
+        schemaName: 'Amazon Appstore Asset Generator'
+      }
+    };
+
+    function updateEcosystemSeo(ecoKey) {
+      const seo = ecosystemSeo[ecoKey] || ecosystemSeo.google;
+      const pageUrl = `${window.location.origin}${window.location.pathname}${seo.hash}`;
+      const setContent = function (id, value) {
+        const element = document.getElementById(id);
+        if (element) element.setAttribute('content', value);
+      };
+
+      document.title = seo.title;
+      setContent('meta-description', seo.description);
+      setContent('og-title', seo.title);
+      setContent('og-description', seo.description);
+      setContent('og-url', pageUrl);
+      setContent('twitter-title', seo.title);
+      setContent('twitter-description', seo.description);
+      const canonicalElement = document.getElementById('canonical-url');
+      if (canonicalElement) canonicalElement.setAttribute('href', pageUrl);
+
+      const schemaElement = document.getElementById('web-application-schema');
+      if (schemaElement) {
+        try {
+          const schema = JSON.parse(schemaElement.textContent || '{}');
+          schema.name = seo.schemaName;
+          schema.description = seo.description;
+          schema.url = pageUrl;
+          schemaElement.textContent = JSON.stringify(schema);
+        } catch (error) {
+          // Keep the static WebApplication schema if a page has malformed JSON-LD.
+        }
+      }
+    }
+
+    function ecosystemFromHash(hash) {
+      const normalizedHash = (hash || '').toLowerCase();
+      return Object.keys(ecosystemSeo).find(function (key) {
+        return ecosystemSeo[key].hash === normalizedHash;
+      }) || null;
+    }
+
     function updateDockAction(ecoKey) {
       const dockBtn = document.getElementById('btn-export-smart-bundle') || document.getElementById('btn-download-bundle');
       const dockLabel = document.getElementById('bundle-btn-text');
@@ -384,6 +450,11 @@
         ecoKey = 'google';
       }
       currentEcosystem = ecoKey;
+
+      updateEcosystemSeo(ecoKey);
+      if (window.location.hash !== ecosystemSeo[ecoKey].hash) {
+        history.pushState(null, '', ecosystemSeo[ecoKey].hash);
+      }
 
       // Update Tab styling
       Object.keys(ecosystemTabs).forEach(key => {
@@ -437,6 +508,19 @@
       }
     });
 
+    window.addEventListener('hashchange', function () {
+      const hashEcosystem = ecosystemFromHash(window.location.hash);
+      if (hashEcosystem && hashEcosystem !== currentEcosystem) {
+        switchEcosystem(hashEcosystem);
+      }
+    });
+    window.addEventListener('popstate', function () {
+      const hashEcosystem = ecosystemFromHash(window.location.hash);
+      if (hashEcosystem && hashEcosystem !== currentEcosystem) {
+        switchEcosystem(hashEcosystem);
+      }
+    });
+
     // Expose global methods
     window.DevAssetStudio.switchStep = switchStep;
     window.DevAssetStudio.switchEcosystem = switchEcosystem;
@@ -481,9 +565,12 @@
     };
     window.DevAssetStudio.switchView = window.DevAssetStudio.switchTab;
 
-    // Check URL hash on page load
+    // Check store URL hash before the legacy workspace-step hash on page load.
     const initialHash = window.location.hash;
-    if (initialHash === '#view-step-2' || initialHash === '#view-screenshot-studio') {
+    const initialEcosystem = ecosystemFromHash(initialHash);
+    if (initialEcosystem) {
+      switchEcosystem(initialEcosystem);
+    } else if (initialHash === '#view-step-2' || initialHash === '#view-screenshot-studio') {
       switchStep(2);
     } else if (initialHash === '#view-step-3' || initialHash === '#view-step-4' || initialHash === '#card-aso') {
       switchStep(3);
