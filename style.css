@@ -1,0 +1,329 @@
+/* ==========================================================================
+   DevAsset Studio • Custom Stylesheet
+   Specialized styles for Card 5 (Play Store Screenshot Mockup Studio)
+   and complementary studio controls.
+   ========================================================================== */
+
+/* Screenshot mockup canvas container */
+.screenshot-preview-stage {
+  perspective: 1000px;
+  background-color: #070a0f;
+  background-image: 
+    radial-gradient(circle at center, rgba(99, 102, 241, 0.08) 0%, transparent 70%),
+    radial-gradient(#1e293b 1px, transparent 1px);
+  background-size: 100% 100%, 20px 20px;
+  height: 100%;
+  max-height: calc(100vh - 220px);
+  min-height: 380px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #222f43 transparent;
+}
+
+.screenshot-preview-stage::-webkit-scrollbar {
+  width: 6px;
+}
+.screenshot-preview-stage::-webkit-scrollbar-track {
+  background: transparent;
+}
+.screenshot-preview-stage::-webkit-scrollbar-thumb {
+  background: #222f43;
+  border-radius: 9999px;
+}
+.screenshot-preview-stage::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Device Mockup Frame styling for live canvas */
+.phone-mockup-frame {
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 30px rgba(99, 102, 241, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  max-height: calc(100vh - 260px);
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: 9 / 16;
+  margin: auto;
+  display: block;
+}
+
+.phone-mockup-frame.orientation-landscape {
+  aspect-ratio: 16 / 9;
+}
+
+.phone-mockup-frame:hover {
+  box-shadow: 
+    0 30px 60px -12px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(99, 102, 241, 0.25),
+    0 0 35px rgba(99, 102, 241, 0.25);
+}
+
+/* Screenshot tab list smooth scroll */
+.screenshot-tabs-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #222f43 transparent;
+}
+.screenshot-tabs-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.screenshot-tabs-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.screenshot-tabs-scroll::-webkit-scrollbar-thumb {
+  background: #222f43;
+  border-radius: 9999px;
+}
+.screenshot-tabs-scroll::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Active tab pulse & pill styling */
+.screenshot-tab-btn.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(79, 70, 229, 0.35) 100%);
+  border-color: rgba(99, 102, 241, 0.8);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Toggle switches */
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #6366f1;
+  background-color: #6366f1;
+}
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #4338ca;
+}
+
+/* Range input accenting for screenshots studio */
+input[type="range"].studio-slider {
+  accent-color: #6366f1;
+}
+
+/* Accordion details for Progressive Disclosure */
+details#screen-advanced-details summary::-webkit-details-marker {
+  display: none;
+}
+details#screen-advanced-details summary {
+  list-style: none;
+}
+details#screen-advanced-details[open] summary {
+  border-bottom: 1px solid #1e2640;
+}
+
+/* Orientation and Layout segmented active buttons */
+.orient-btn.active,
+.screen-layout-btn.active,
+.frame-style-btn.active {
+  background-color: #1e1b4b; /* bg-indigo-950 */
+  border-color: #6366f1; /* border-indigo-500 */
+  color: #a5b4fc; /* text-indigo-300 */
+  font-weight: 600;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.orient-btn.inactive,
+.screen-layout-btn.inactive,
+.frame-style-btn.inactive {
+  background-color: #0f172a; /* bg-slate-900 */
+  border-color: transparent;
+  color: #94a3b8; /* text-slate-400 */
+  font-weight: 500;
+}
+
+/* Screenshot Canvas styling */
+#screenshot-canvas.orientation-portrait {
+  aspect-ratio: 9 / 16;
+  max-height: 540px;
+}
+
+#screenshot-canvas.orientation-landscape {
+  aspect-ratio: 16 / 9;
+  max-height: 400px;
+}
+
+/* Pulse badge animation */
+@keyframes studioGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+.studio-indicator-dot {
+  animation: studioGlow 2s infinite ease-in-out;
+}
+
+/* View Transition FadeIn */
+@keyframes studioFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: studioFadeIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Slot Card styling */
+.screenshot-slot-card {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.screenshot-slot-card:hover {
+  transform: translateY(-2px);
+}
+.screenshot-slot-card.active-slot {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.25);
+}
+
+/* Batch Mockup Gallery Card styling */
+.batch-mockup-card {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.batch-mockup-card:hover {
+  transform: translateY(-3px);
+  border-color: #4f46e5;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 0 15px rgba(99, 102, 241, 0.15);
+}
+.batch-mockup-card.active-card {
+  border-color: #6366f1 !important;
+  background-color: rgba(30, 27, 75, 0.35) !important;
+  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.7), 0 0 24px rgba(99, 102, 241, 0.35);
+}
+
+.mockup-thumb-canvas {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+}
+.batch-mockup-card:hover .mockup-thumb-canvas {
+  transform: scale(1.015);
+}
+
+/* Multi-screenshot dropzone active state */
+.batch-dropzone-active {
+  border-color: #6366f1 !important;
+  background-color: rgba(99, 102, 241, 0.12) !important;
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.3);
+}
+
+/* ==========================================================================
+   Navigation & Workspace Visibility Styles
+   ========================================================================== */
+
+/* Hidden module states */
+.hidden-module,
+#view-privacy-policy.hidden,
+#card-privacy.hidden {
+  display: none !important;
+}
+
+/* Sidebar navigation item active styling */
+.nav-module-link.active {
+  background-color: rgba(99, 102, 241, 0.15) !important;
+  border-color: rgba(99, 102, 241, 0.4) !important;
+  color: #ffffff !important;
+}
+
+.nav-module-link.active i {
+  color: #818cf8 !important;
+}
+
+/* Mobile navigation link active styling */
+.mobile-nav-link.active {
+  background-color: rgba(99, 102, 241, 0.2) !important;
+  border-color: rgba(99, 102, 241, 0.4) !important;
+  color: #ffffff !important;
+}
+
+.mobile-nav-link.active i {
+  color: #818cf8 !important;
+}
+
+/* Privacy Policy Full-Focus Dashboard Stage */
+.privacy-focus-dashboard {
+  animation: studioFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   Core Web Vitals & Zero-CLS Performance Layout Rules (Google Ranking Factor)
+   Strictly enforces aspect-ratios and minimum container heights to keep CLS < 0.05
+   ========================================================================== */
+
+#preview-img,
+.mipmap-preview-thumb,
+.mockup-thumb-canvas {
+  aspect-ratio: 1 / 1;
+}
+
+#dropzone-preview {
+  min-height: 120px;
+}
+
+#feature-banner-preview,
+#samsung-banner-canvas,
+#amazon-banner-canvas {
+  aspect-ratio: 1024 / 500;
+  min-height: 160px;
+  width: 100%;
+}
+
+#screenshot-mockup-preview,
+.screenshot-preview-stage {
+  min-height: 380px;
+}
+
+#screenshot-canvas {
+  aspect-ratio: 9 / 16;
+  min-height: 360px;
+}
+
+#screenshot-canvas.orientation-landscape {
+  aspect-ratio: 16 / 9;
+  min-height: 240px;
+}
+
+#mockup-batch-grid {
+  min-height: 110px;
+}
+
+#ios-mockup-stage {
+  min-height: 420px;
+}
+
+#ios-mockup-canvas {
+  aspect-ratio: 1290 / 2796;
+  min-height: 380px;
+}
+
+#samsung-screenshot-stage {
+  min-height: 400px;
+}
+
+#samsung-screenshot-canvas {
+  aspect-ratio: 1080 / 2340;
+  min-height: 380px;
+}
+
+#amazon-tablet-stage {
+  min-height: 260px;
+}
+
+#amazon-tablet-canvas {
+  aspect-ratio: 1920 / 1200;
+  min-height: 220px;
+}
+

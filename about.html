@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About DevAsset Studio — Built by TarkStudio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body{ font-family:'Inter', sans-serif; background:#0C0F14; }
+  .font-serif-display{ font-family:'Fraunces', Georgia, serif; }
+  .font-mono-tech{ font-family:'IBM Plex Mono', Consolas, monospace; }
+  .grid-fade{
+    background-image:
+      linear-gradient(rgba(233,237,245,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(233,237,245,0.03) 1px, transparent 1px);
+    background-size:38px 38px;
+    -webkit-mask-image: radial-gradient(ellipse at top right, black, transparent 70%);
+    mask-image: radial-gradient(ellipse at top right, black, transparent 70%);
+  }
+</style>
+</head>
+<body class="text-slate-200 antialiased min-h-screen flex flex-col justify-between">
+
+<!-- Top Navigation Bar with Back to Studio on Top-Left -->
+<header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-6 py-3.5">
+  <div class="max-w-4xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="inline-flex items-center gap-2 font-mono-tech text-xs text-slate-300 hover:text-white transition-colors group" title="Return to DevAsset Studio">
+      <svg class="w-4 h-4 text-slate-400 group-hover:text-indigo-400 group-hover:-translate-x-0.5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span>Back to Studio</span>
+    </a>
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-indigo-950/70 border border-indigo-500/30 text-indigo-300 font-mono-tech font-semibold text-xs tracking-tight hover:bg-indigo-900/60 transition-colors">
+        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span>
+        <span>DevAsset Studio</span>
+      </a>
+      <span class="text-slate-600 text-xs font-mono-tech">•</span>
+      <a href="privacy.html" class="text-xs font-mono-tech text-slate-400 hover:text-indigo-300 transition-colors">Privacy &amp; Terms</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================= -->
+<!-- ABOUT US SECTION                              -->
+<!-- ============================================= -->
+<section id="about-devasset" class="relative overflow-hidden flex-1">
+
+  <!-- Hero -->
+  <div class="relative border-b border-slate-800">
+    <div class="absolute inset-0 grid-fade pointer-events-none"></div>
+    <div class="relative max-w-3xl mx-auto px-6 pt-16 pb-14 sm:pt-20 sm:pb-16">
+      <p class="font-mono-tech text-xs tracking-wider text-emerald-400 mb-5">
+        <span class="text-indigo-400">◆</span> ABOUT DEVASSET STUDIO
+      </p>
+      <h1 class="font-serif-display text-4xl sm:text-5xl font-semibold text-white leading-tight mb-6 max-w-xl">
+        We got tired of Android Studio just to make an icon.
+      </h1>
+      <p class="text-lg text-slate-400 max-w-2xl leading-relaxed">
+        DevAsset Studio is a small, honest tool — built by <span class="text-slate-200 font-medium">TarkStudio</span>, an independent one-person software workshop — for the very specific, very repetitive job of turning one master image into a compliant asset bundle. No accounts. No servers. No uploads.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-3xl mx-auto px-6 py-16 space-y-16">
+
+    <!-- 1. Origin & Friction -->
+    <article>
+      <h2 class="font-serif-display text-2xl sm:text-3xl font-semibold text-white mb-6">
+        The friction that started this
+      </h2>
+      <div class="space-y-4 text-slate-300 leading-relaxed">
+        <p>
+          If you've shipped more than a couple of apps, you already know the ritual. You finish the icon in your design tool, and then the <em>real</em> work begins: booting a multi-gigabyte Android Studio instance just to right-click <code class="font-mono-tech text-sm bg-slate-800/60 text-emerald-300 px-1.5 py-0.5 rounded">New → Image Asset</code> and watch it churn out <code class="font-mono-tech text-sm bg-slate-800/60 text-emerald-300 px-1.5 py-0.5 rounded">res/mipmap-mdpi</code> through <code class="font-mono-tech text-sm bg-slate-800/60 text-emerald-300 px-1.5 py-0.5 rounded">mipmap-xxxhdpi</code> — density buckets that Google's own tooling has been re-shuffling for a decade.
+        </p>
+        <p>
+          Then you switch to Xcode and it's a different fight entirely: hand-building an <code class="font-mono-tech text-sm bg-slate-800/60 text-emerald-300 px-1.5 py-0.5 rounded">AppIcon.appiconset</code>, getting the <code class="font-mono-tech text-sm bg-slate-800/60 text-emerald-300 px-1.5 py-0.5 rounded">Contents.json</code> scale factors exactly right, and praying you didn't fat-finger a size entry that Apple's validator will reject on upload. Add Samsung's One UI continuous-squircle icon shape on top of that, plus Amazon Fire OS's own asset quirks for sideloaded builds, and "just make an icon" turns into an afternoon.
+        </p>
+        <p class="text-slate-200">
+          That's the whole reason DevAsset Studio exists. The premise is simple, almost stubborn: <strong class="text-white">one 1024×1024 master icon should be enough</strong> to generate a pixel-perfect, spec-compliant asset package for all four major ecosystems — Android, iOS, Samsung, Amazon — in seconds, not an afternoon.
+        </p>
+      </div>
+    </article>
+
+    <!-- 2. Technical Architecture & Privacy -->
+    <article>
+      <h2 class="font-serif-display text-2xl sm:text-3xl font-semibold text-white mb-6">
+        How it actually works
+      </h2>
+      <p class="text-slate-300 leading-relaxed mb-6">
+        DevAsset Studio runs <strong class="text-white">100% in your browser.</strong> There's no backend doing the heavy lifting — the "engine" is the <span class="text-slate-200">HTML5 Canvas API</span> resizing and rendering every density and idiom locally, and <span class="text-slate-200">JSZip</span> packaging the final output into a downloadable archive, all inside the tab you already have open.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="rounded-lg border border-slate-800 bg-slate-900/60 p-5">
+          <p class="font-mono-tech text-xs text-emerald-400 mb-2">// zero uploads</p>
+          <p class="text-sm text-slate-400 leading-relaxed">Your master icon, screenshots, and branding never leave your machine. There is no upload endpoint to send them to — this is a client-side app icon resizer, not a service that stores your artwork.</p>
+        </div>
+        <div class="rounded-lg border border-slate-800 bg-slate-900/60 p-5">
+          <p class="font-mono-tech text-xs text-emerald-400 mb-2">// zero tracking</p>
+          <p class="text-sm text-slate-400 leading-relaxed">No analytics pixels, no session recording, no behavioral tracking. We don't know what icon you made, and we've built it so we structurally can't know.</p>
+        </div>
+        <div class="rounded-lg border border-slate-800 bg-slate-900/60 p-5">
+          <p class="font-mono-tech text-xs text-emerald-400 mb-2">// zero database</p>
+          <p class="text-sm text-slate-400 leading-relaxed">There's no backend database because there's no backend. Once the page loads, everything from resizing to zipping happens in memory, on your device.</p>
+        </div>
+        <div class="rounded-lg border border-slate-800 bg-slate-900/60 p-5">
+          <p class="font-mono-tech text-xs text-emerald-400 mb-2">// offline-resilient</p>
+          <p class="text-sm text-slate-400 leading-relaxed">Once the page has loaded, it keeps working without an active connection — genuinely useful on a slow hotel Wi-Fi or a train, not just a marketing line.</p>
+        </div>
+      </div>
+
+      <p class="text-slate-300 leading-relaxed">
+        Practically, that means DevAsset Studio functions as an <strong class="text-white">Android mipmap generator</strong>, an <strong class="text-white">iOS AppIcon bundle maker</strong>, and a <strong class="text-white">Contents.json generator</strong> in one pass — including handling the <strong class="text-white">Samsung One UI squircle</strong> icon mask and Amazon Fire OS's asset requirements — without a single byte of your proprietary artwork ever touching a server. For a solo developer or a small studio protecting unreleased branding, that's not a nice-to-have; it's the entire point of a <strong class="text-white">zero-server-upload developer toolkit</strong>.
+      </p>
+    </article>
+
+    <!-- 3. Philosophy of TarkStudio -->
+    <article>
+      <h2 class="font-serif-display text-2xl sm:text-3xl font-semibold text-white mb-6">
+        The workshop behind it — TarkStudio
+      </h2>
+      <p class="text-slate-300 leading-relaxed mb-4">
+        DevAsset Studio isn't a company with a roadmap and a growth team. It's one tool out of <span class="text-slate-200 font-medium">TarkStudio</span>, an indie software and tooling workshop built around a fairly unglamorous belief: the small, annoying, repetitive parts of shipping mobile software deserve just as much engineering care as the flashy parts.
+      </p>
+      <p class="text-slate-300 leading-relaxed mb-4">
+        TarkStudio builds focused developer utilities and client-side tools. It follows the same rule this asset generator follows: local-first performance where it's possible, no unnecessary accounts, no dark patterns, and no pretending a hobby-sized project is a "platform" with "enterprise-grade infrastructure." It's a workshop, not a SaaS company, and the tools are built the way their own maker actually wanted to use them.
+      </p>
+      <p class="text-slate-300 leading-relaxed">
+        If a tool doesn't save real time on a real, recurring workflow for a mobile creator, it doesn't get shipped. DevAsset Studio survived that filter because exporting icons is a task every app developer repeats, release after release, ecosystem after ecosystem — and it deserved a fifteen-second fix instead of a fifteen-minute one.
+      </p>
+    </article>
+
+    <!-- 4. Contact -->
+    <article class="rounded-xl border border-slate-800 bg-slate-900/40 p-8">
+      <h2 class="font-serif-display text-xl font-semibold text-white mb-3">Found a bug, or an edge case we missed?</h2>
+      <p class="text-slate-400 leading-relaxed mb-5">
+        This is a small, actively maintained tool, not a support ticket queue. If a density bucket renders wrong, a squircle mask looks off, or a <code class="font-mono-tech text-sm bg-slate-800/60 text-emerald-300 px-1.5 py-0.5 rounded">Contents.json</code> entry doesn't validate — tell us directly.
+      </p>
+      <a href="mailto:gyancom360@gmail.com"
+         class="inline-flex items-center gap-2 font-mono-tech text-sm text-emerald-300 border border-emerald-900/60 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-700 transition-colors px-4 py-2.5 rounded-lg">
+        gyancom360@gmail.com
+        <span aria-hidden="true">→</span>
+      </a>
+    </article>
+
+    <!-- 5. Legal Trademark Disclaimer (Google, Apple, Samsung, and Amazon) -->
+    <article class="rounded-xl border border-slate-800/80 bg-slate-900/30 p-7 text-xs text-slate-400 leading-relaxed space-y-3 font-mono-tech">
+      <div class="flex items-center gap-2 text-slate-300 font-semibold tracking-wide uppercase text-[11px]">
+        <span class="text-indigo-400">§</span> Legal Trademark Notice &amp; Disclaimer
+      </div>
+      <div class="space-y-2 text-slate-300">
+        <p>
+          <strong class="text-white">Google</strong>, <strong class="text-white">Google Play</strong>, and <strong class="text-white">Android</strong> are registered trademarks of Google LLC.
+        </p>
+        <p>
+          <strong class="text-white">Apple</strong>, <strong class="text-white">App Store</strong>, <strong class="text-white">Xcode</strong>, <strong class="text-white">iPhone</strong>, and <strong class="text-white">iOS</strong> are trademarks or registered trademarks of Apple Inc., registered in the U.S. and other countries.
+        </p>
+        <p>
+          <strong class="text-white">Samsung</strong>, <strong class="text-white">Galaxy Store</strong>, and <strong class="text-white">One UI</strong> are trademarks or registered trademarks of Samsung Electronics Co., Ltd.
+        </p>
+        <p>
+          <strong class="text-white">Amazon</strong>, <strong class="text-white">Appstore</strong>, <strong class="text-white">Fire OS</strong>, and related marks are trademarks of Amazon.com, Inc. or its affiliates.
+        </p>
+      </div>
+      <p class="text-slate-500 text-[11px] leading-relaxed pt-3 border-t border-slate-800/60">
+        DevAsset Studio and TarkStudio are independent developer utilities. This platform is not endorsed, sponsored, affiliated with, or certified by Google LLC, Apple Inc., Samsung Electronics Co., Ltd., Amazon.com, Inc., or any of their respective subsidiaries or corporate affiliates. All ecosystem names, product titles, and brand marks are the exclusive property of their respective owners and are referenced strictly for identification, technical compatibility, and descriptive formatting purposes under nominal fair use.
+      </p>
+    </article>
+
+  </div>
+</section>
+<!-- ============================================= -->
+<!-- END ABOUT US SECTION                           -->
+<!-- ============================================= -->
+
+<!-- Professional 3-Column Footer & Platform Identity -->
+<footer class="w-full mt-16 border-t border-slate-800 bg-slate-950/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto py-10 px-6">
+    <!-- 3-Column Responsive Grid Structure -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 text-left">
+      
+      <!-- Column 1 (Studio Bio) -->
+      <div class="flex flex-col space-y-3">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <h3 class="text-sm font-mono-tech font-bold text-white tracking-tight">
+            <a href="https://tarkstudio.github.io/TarkStudio/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-indigo-300 transition-colors underline decoration-slate-600 underline-offset-2" title="Visit TarkStudio">TarkStudio</a> / DevAsset Studio
+          </h3>
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-mono-tech font-medium bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">
+            <svg class="w-3 h-3 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+            <span>Verified</span>
+          </span>
+        </div>
+        <p class="text-xs font-mono-tech text-slate-400">Engineered &amp; Operated by Brijesh • Lucknow, UP, India</p>
+        <p class="text-xs text-slate-400 leading-relaxed pt-1">
+          An independent product studio creating clean offline mobile games, utilities, and developer web tools.
+        </p>
+      </div>
+
+      <!-- Column 2 (Tool Privacy Standards) -->
+      <div class="flex flex-col space-y-3 md:border-l md:border-slate-800/80 md:pl-8 lg:pl-12">
+        <h4 class="text-xs font-mono-tech font-semibold uppercase tracking-wider text-slate-200 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span>Tool Privacy Standards</span>
+        </h4>
+        <ul class="space-y-2.5 text-xs text-slate-300 leading-relaxed">
+          <li class="flex items-start gap-2">
+            <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong class="text-white font-medium">In-Browser Processing:</strong> Assets and images are processed locally on your device with zero server uploads.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong class="text-white font-medium">Zero Tracking:</strong> No analytics, tracking scripts, or user data harvesting.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong class="text-white font-medium">Clean &amp; Free:</strong> Ad-free utility built for independent developers.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3 (Quick Links & Contact) -->
+      <div class="flex flex-col space-y-3 md:border-l md:border-slate-800/80 md:pl-8 lg:pl-12">
+        <h4 class="text-xs font-mono-tech font-semibold uppercase tracking-wider text-slate-200 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+          <span>Quick Links</span>
+        </h4>
+        <ul class="flex flex-col space-y-2.5 text-xs font-mono-tech text-slate-400">
+          <li>
+            <a href="privacy.html" class="hover:text-indigo-300 transition-colors flex items-center gap-2" title="Privacy Policy &amp; Terms of Service">
+              <span class="text-slate-600">›</span>
+              <span>Privacy &amp; Terms</span>
+            </a>
+          </li>
+          <li>
+            <a href="about.html" class="hover:text-indigo-300 transition-colors flex items-center gap-2 text-slate-200" title="Platform Identity &amp; About Us">
+              <span class="text-slate-600">›</span>
+              <span>Platform Identity / About Us</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:gyancom360@gmail.com" class="hover:text-indigo-300 transition-colors flex items-center gap-2" title="Send Email Support">
+              <span class="text-slate-600">›</span>
+              <span>Contact: gyancom360@gmail.com</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Horizontal rule (border-slate-800/80) -->
+    <div class="w-full my-6 border-t border-slate-800/80"></div>
+
+    <!-- Bottom Bar (Sub-footer) -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 font-mono-tech text-center sm:text-left">
+      <span>&copy; 2026 DevAsset Studio. All rights reserved.</span>
+      <span>Direct execution environment • Zero Server Dependency.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

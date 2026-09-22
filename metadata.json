@@ -1,0 +1,6 @@
+{
+  "name": "DevAsset Studio",
+  "description": "Instant client-side developer pipeline. Generate compliant 512x512 icons, 1024x500 feature graphics, mockups, and metadata for Google Play, Apple App Store, Samsung Galaxy Store, and Amazon Appstore with zero cloud upload.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

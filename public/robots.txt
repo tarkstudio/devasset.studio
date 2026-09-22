@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tarkstudio.github.io/devasset.studio/sitemap.xml

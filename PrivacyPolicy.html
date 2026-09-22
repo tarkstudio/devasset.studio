@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevAsset Studio — Privacy Policy &amp; Terms of Service</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0C0F14;
+    --bg-raised: #12161E;
+    --bg-panel: #161B25;
+    --border: #232A38;
+    --border-soft: #1B212C;
+    --text: #E9EDF5;
+    --text-dim: #9FA8BC;
+    --text-faint: #67728A;
+    --accent: #7C83FD;
+    --accent-soft: #2A2A52;
+    --accent-bright: #A6ABFF;
+    --mint: #4CD9B0;
+    --danger: #F0806B;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'IBM Plex Mono', Consolas, monospace;
+    --max-w: 880px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 560px at 90% -10%, rgba(124,131,253,0.08), transparent 55%),
+      radial-gradient(900px 480px at 0% 15%, rgba(76,217,176,0.05), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-bright);}
+  a:hover{color:var(--accent);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--mint); outline-offset:3px;}
+  ::selection{background:var(--accent-soft); color:#fff;}
+
+  /* Top Navigation Bar */
+  .site-nav{
+    border-bottom:1px solid var(--border);
+    background:rgba(12, 15, 20, 0.85);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    position:sticky; top:0; z-index:100;
+    padding:12px 24px;
+  }
+  .site-nav-inner{
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand-link{
+    display:flex; align-items:center; gap:10px;
+    color:#fff; text-decoration:none; font-family:var(--mono); font-weight:600; font-size:14px;
+  }
+  .brand-badge{
+    background:linear-gradient(135deg, #6366f1, #8b5cf6);
+    color:#fff; width:28px; height:28px; border-radius:6px;
+    display:flex; align-items:center; justify-content:center; font-size:12px;
+  }
+  .back-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:8px 14px; border-radius:8px;
+    background:var(--bg-raised); border:1px solid var(--border);
+    color:var(--text); font-family:var(--mono); font-size:12.5px;
+    text-decoration:none; transition:all 0.2s ease;
+  }
+  .back-btn:hover{
+    background:var(--bg-panel); border-color:var(--accent); color:#fff;
+  }
+
+  header.hero{
+    border-bottom:1px solid var(--border);
+    padding:64px 24px 52px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(233,237,245,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(233,237,245,0.03) 1px, transparent 1px);
+    background-size:38px 38px;
+    mask-image: radial-gradient(ellipse at top right, black, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-inner{max-width:var(--max-w); margin:0 auto; position:relative;}
+  .kicker{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    color:var(--mint);
+    margin:0 0 18px;
+  }
+  .kicker::before{content:"◆ "; color:var(--accent);}
+  h1.title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-optical-sizing:auto;
+    font-size:clamp(2.1rem, 4.4vw, 3.1rem);
+    line-height:1.12;
+    margin:0 0 20px;
+    color:#fff;
+    max-width:18ch;
+  }
+  .subtitle{font-size:1.05rem; color:var(--text-dim); max-width:64ch; margin:0 0 28px;}
+  .meta-row{display:flex; flex-wrap:wrap; gap:10px 12px; font-family:var(--mono); font-size:12.5px; color:var(--text-faint);}
+  .meta-pill{border:1px solid var(--border); background:var(--bg-raised); padding:6px 12px; border-radius:5px; color:var(--text-dim);}
+  .meta-pill strong{color:var(--accent-bright); font-weight:500;}
+
+  .layout{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:260px minmax(0,1fr); gap:0;}
+  nav.toc{
+    padding:40px 20px 80px 24px;
+    position:sticky; top:53px;
+    align-self:start;
+    max-height:calc(100vh - 53px);
+    overflow-y:auto;
+    border-right:1px solid var(--border);
+  }
+  nav.toc h2{font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin:0 0 14px; font-weight:500;}
+  
+  /* Robust Table of Contents without double numbering clash */
+  nav.toc ol{
+    list-style: none !important;
+    list-style-type: none !important;
+    margin: 0;
+    padding: 0;
+    counter-reset: toc;
+  }
+  nav.toc li{
+    counter-increment: toc;
+    margin-bottom: 2px;
+    list-style: none !important;
+    list-style-type: none !important;
+  }
+  nav.toc a{
+    display:block;
+    padding:7px 10px 7px 8px;
+    border-radius:5px;
+    font-size:13.5px;
+    color:var(--text-dim);
+    text-decoration:none;
+    border-left:2px solid transparent;
+  }
+  nav.toc a::before{
+    content:counter(toc) ".  ";
+    color:var(--text-faint);
+    font-family:var(--mono);
+    font-size:12px;
+  }
+  nav.toc a:hover{color:var(--text); background:var(--bg-panel); border-left-color:var(--accent);}
+
+  main.doc{padding:40px 40px 120px; min-width:0;}
+  main.doc > p.intro{
+    color:var(--text-dim); font-size:15px; padding:16px 18px;
+    background:var(--bg-panel); border:1px solid var(--border-soft);
+    border-left:3px solid var(--mint); border-radius:6px; margin:0 0 40px;
+    line-height:1.7;
+  }
+  section.clause{padding:44px 0 8px; border-top:1px solid var(--border-soft);}
+  section.clause:first-of-type{border-top:none; padding-top:0;}
+  .clause-num{font-family:var(--mono); font-size:12.5px; color:var(--accent); letter-spacing:0.03em; margin:0 0 8px; display:block;}
+  h2.clause-title{font-family:var(--serif); font-weight:600; font-size:1.55rem; color:#fff; margin:0 0 20px; line-height:1.3;}
+  h3.sub-title{font-family:var(--sans); font-weight:600; font-size:1.02rem; color:var(--accent-bright); margin:28px 0 12px;}
+  .clause p{color:#CFD7E6; margin:0 0 15px; max-width:74ch;}
+  .clause ul, .clause ol.legal-list{margin:0 0 18px; padding-left:22px; max-width:74ch;}
+  .clause ul li, .clause ol.legal-list li{color:#CFD7E6; margin-bottom:9px; padding-left:4px;}
+  ol.legal-list{counter-reset:legal; list-style:none !important; list-style-type:none !important; padding-left:0;}
+  ol.legal-list > li{counter-increment:legal; position:relative; padding-left:34px; list-style:none !important;}
+  ol.legal-list > li::before{content:counter(legal, lower-alpha) ")"; position:absolute; left:0; color:var(--mint); font-family:var(--mono); font-size:13px;}
+  strong{color:var(--text); font-weight:600;}
+  code{font-family:var(--mono); background:var(--bg-raised); border:1px solid var(--border); padding:1px 6px; border-radius:4px; font-size:0.88em; color:var(--accent-bright);}
+
+  .callout{border:1px solid var(--border); background:var(--bg-panel); border-radius:8px; padding:18px 20px; margin:18px 0 24px; max-width:74ch;}
+  .callout.warn{border-left:3px solid var(--danger);}
+  .callout.info{border-left:3px solid var(--mint);}
+  .callout p:last-child{margin-bottom:0;}
+  .callout .tag{font-family:var(--mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--danger); display:block; margin-bottom:8px;}
+  .callout.info .tag{color:var(--mint);}
+
+  table.data-table{width:100%; border-collapse:collapse; margin:16px 0 26px; max-width:74ch; font-size:14.5px;}
+  table.data-table th, table.data-table td{border:1px solid var(--border); padding:10px 14px; text-align:left; vertical-align:top;}
+  table.data-table th{background:var(--bg-raised); color:var(--accent-bright); font-weight:500; font-family:var(--mono); font-size:12.5px; letter-spacing:0.02em;}
+  table.data-table td{color:#CFD7E6;}
+
+  .grievance-card{background:var(--bg-panel); border:1px solid var(--border); border-radius:10px; padding:26px 28px; max-width:74ch; margin-top:10px;}
+  .grievance-card dl{margin:0; display:grid; grid-template-columns:160px 1fr; row-gap:12px; column-gap:16px;}
+  .grievance-card dt{font-family:var(--mono); font-size:12px; color:var(--text-faint); letter-spacing:0.02em; padding-top:2px;}
+  .grievance-card dd{margin:0; color:var(--text); font-size:15px;}
+  .grievance-card dd a{font-weight:500;}
+
+  .pipeline{
+    display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 26px; max-width:74ch;
+  }
+  .pipeline .step{
+    flex:1 1 150px;
+    background:var(--bg-panel); border:1px solid var(--border); border-radius:8px;
+    padding:14px 16px; font-size:13.5px; color:var(--text-dim);
+  }
+  .pipeline .step .n{font-family:var(--mono); color:var(--mint); font-size:11px; display:block; margin-bottom:6px;}
+  .pipeline .step strong{display:block; color:var(--text); margin-bottom:4px; font-size:14px;}
+
+  footer.doc-footer{max-width:74ch; margin:60px 0 0; padding-top:28px; border-top:1px solid var(--border-soft); color:var(--text-faint); font-size:13px;}
+
+  @media (max-width: 940px){
+    .layout{grid-template-columns:1fr;}
+    nav.toc{position:relative; top:0; max-height:none; border-right:none; border-bottom:1px solid var(--border); padding:28px 24px;}
+    main.doc{padding:36px 22px 90px;}
+    header.hero{padding:48px 20px 36px;}
+    .grievance-card dl{grid-template-columns:1fr;}
+  }
+  @media print{
+    .site-nav, nav.toc{display:none;}
+    .layout{grid-template-columns:1fr;}
+    body{background:#fff; color:#111;}
+  }
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar with Return to App Link -->
+<nav class="site-nav" aria-label="Main Navigation">
+  <div class="site-nav-inner">
+    <a href="index.html" class="brand-link" title="Return to DevAsset Studio">
+      <span class="brand-badge">&lt;/&gt;</span>
+      <span>DevAsset Studio</span>
+    </a>
+    <a href="index.html" class="back-btn" title="Back to workspace">
+      <span>&larr; Back to Studio</span>
+    </a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Legal &amp; Compliance Document</p>
+    <h1 class="title">Privacy Policy &amp; Terms of Service</h1>
+    <p class="subtitle">A unified master legal instrument governing your use of DevAsset Studio — the client-side Android &amp; Play Store developer asset generation suite — under the laws of India, including the Digital Personal Data Protection Act, 2023 and the Information Technology Act, 2000.</p>
+    <div class="meta-row">
+      <span class="meta-pill">Platform: <strong>DevAsset Studio</strong></span>
+      <span class="meta-pill">Operator: <strong>TarkStudio (Brijesh)</strong></span>
+      <span class="meta-pill">Governing Law: <strong>India</strong></span>
+      <span class="meta-pill">Jurisdiction: <strong>Lucknow, Uttar Pradesh</strong></span>
+      <span class="meta-pill">Effective Date: <strong id="eff-date">September 19, 2026</strong></span>
+      <span class="meta-pill">Version: <strong>1.0</strong></span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Table of contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1">Entity &amp; Operational Architecture</a></li>
+      <li><a href="#s2">Definitions &amp; Interpretation</a></li>
+      <li><a href="#s3">Binding Acceptance of Terms</a></li>
+      <li><a href="#s4">Local Client-Side Execution Guarantee</a></li>
+      <li><a href="#s5">Session Ephemerality &amp; Data Purge</a></li>
+      <li><a href="#s6">Intellectual Property &amp; Asset Ownership</a></li>
+      <li><a href="#s7">Store Compliance &amp; Accuracy Disclaimer</a></li>
+      <li><a href="#s8">Content Responsibility</a></li>
+      <li><a href="#s9">Disclaimer of Warranties</a></li>
+      <li><a href="#s10">Limitation of Liability</a></li>
+      <li><a href="#s11">Limited Data We Do Collect</a></li>
+      <li><a href="#s12">Your Rights Under the DPDP Act</a></li>
+      <li><a href="#s13">Prohibited Conduct</a></li>
+      <li><a href="#s14">Indemnification</a></li>
+      <li><a href="#s15">Term, Suspension &amp; Termination</a></li>
+      <li><a href="#s16">Governing Law &amp; Jurisdiction</a></li>
+      <li><a href="#s17">Dispute Resolution</a></li>
+      <li><a href="#s18">Grievance Redressal Mechanism</a></li>
+      <li><a href="#s19">Amendments to This Policy</a></li>
+      <li><a href="#s20">Miscellaneous Provisions</a></li>
+      <li><a href="#s21">Contact Information</a></li>
+      <li><a href="#s22">Third-Party Trademarks &amp; Nominative Fair Use Disclaimer</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+    <p class="intro">This document is a legally binding, unified Privacy Policy and Terms of Service between you (<strong>"User," "you,"</strong> or <strong>"your"</strong>) and <strong>TarkStudio</strong> (led by Brijesh, Lucknow), the independent developer entity engineering and operating <strong>DevAsset Studio</strong> (<strong>"DevAsset Studio," "we," "us," "our,"</strong> or the <strong>"Platform"</strong>). It governs your access to and use of the DevAsset Studio web application and all its export utilities. Please read this document in its entirety before using the Platform.</p>
+
+    <!-- 1 -->
+    <section class="clause" id="s1">
+      <span class="clause-num">Section 1</span>
+      <h2 class="clause-title">Entity &amp; Operational Architecture</h2>
+      <p>1.1. <strong>Platform Identity.</strong> DevAsset Studio is an independent developer asset generation suite engineered and operated under parent studio <strong>TarkStudio</strong> (led by Brijesh as founder and lead developer), based in Lucknow, Uttar Pradesh, India.</p>
+      <p>1.2. <strong>Operational Nature.</strong> DevAsset Studio is a developer-focused utility application that enables users to generate app icons (512×512), feature banners, Play Store screenshot mockups (9:16 portrait frames), App Store Optimization ("ASO") metadata, and legal policy assets, with all generation and rendering performed directly within the user's browser RAM and local client storage. DevAsset Studio is a tool, not a hosting service, marketplace, or publishing intermediary.</p>
+      <p>1.3. <strong>Statutory Framework.</strong> This Policy is drafted and published with the intention of full compliance with: the Digital Personal Data Protection Act, 2023 ("DPDPA") and rules framed thereunder; the Information Technology Act, 2000, including Section 43A (compensation for failure to protect data) and Section 79 (intermediary due diligence, applied here voluntarily and to the extent relevant to the Platform's tooling function); the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 ("SPDI Rules"); and the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 ("IT Rules 2021"). Where a User accesses the Platform from the European Economic Area, United Kingdom, or Switzerland, DevAsset Studio additionally aligns its practices with the General Data Protection Regulation (EU) 2016/679 ("GDPR") as a matter of voluntary best practice.</p>
+    </section>
+
+    <!-- 2 -->
+    <section class="clause" id="s2">
+      <span class="clause-num">Section 2</span>
+      <h2 class="clause-title">Definitions &amp; Interpretation</h2>
+      <ol class="legal-list">
+        <li><strong>"Platform"</strong> means the DevAsset Studio web application, including all of its generation, mockup, export, and metadata-synthesis utilities.</li>
+        <li><strong>"Source Material"</strong> means any app screenshot, raw imagery, logo, UI design, draft text, or other file a User uploads, imports, or drags into the Platform for processing.</li>
+        <li><strong>"Generated Asset(s)"</strong> means any app icon, banner, mockup, screenshot frame, caption, ASO metadata string, or policy draft produced by the Platform from Source Material or User input.</li>
+        <li><strong>"Asset Bundle"</strong> means a ZIP archive or equivalent packaged export containing one or more Generated Assets, produced by the Platform's export utility for download to the User's device.</li>
+        <li><strong>"Client-Side Processing"</strong> means computation performed entirely within the User's own browser environment — including the HTML5 Canvas API, in-memory JavaScript buffers, IndexedDB, and Blob storage — without transmission of the underlying Source Material to any DevAsset Studio server.</li>
+        <li><strong>"Personal Data," "Data Principal," "Data Fiduciary,"</strong> and <strong>"Processing"</strong> bear the meanings ascribed to them under the DPDPA, and, where applicable to a European User, the corresponding meanings under the GDPR.</li>
+        <li><strong>"Grievance Officer"</strong> means the individual designated under Section 18 to receive and resolve complaints under the IT Rules 2021 and the DPDPA.</li>
+      </ol>
+    </section>
+
+    <!-- 3 -->
+    <section class="clause" id="s3">
+      <span class="clause-num">Section 3</span>
+      <h2 class="clause-title">Binding Acceptance of Terms</h2>
+      <p>3.1. By accessing the Platform, uploading Source Material, generating a mockup, downloading an Asset Bundle, or using any export utility made available by DevAsset Studio, you acknowledge that you have read, understood, and agree to be immediately and irrevocably bound by this Policy in its entirety. Each of the actions listed above independently constitutes binding acceptance; you need not perform all of them for this Policy to apply to you.</p>
+      <p>3.2. If you do not agree to any provision of this Policy, you must immediately discontinue all use of the Platform and refrain from uploading any Source Material or downloading any Generated Asset.</p>
+      <p>3.3. You represent that you are at least eighteen (18) years of age, or that you are accessing the Platform under the supervision of a parent or legal guardian who accepts this Policy on your behalf, and that you have the legal capacity to enter into a binding agreement under the Indian Contract Act, 1872.</p>
+    </section>
+
+    <!-- 4 -->
+    <section class="clause" id="s4">
+      <span class="clause-num">Section 4</span>
+      <h2 class="clause-title">Local Client-Side Execution &amp; Zero Image Harvesting</h2>
+      <div class="callout info">
+        <span class="tag">Core Guarantee</span>
+        <p>DevAsset Studio is architected on a principle of <strong>100% Client-Side, In-Memory Processing</strong>. Every app screenshot, raw image, logo, UI design, and draft caption you provide is processed strictly within volatile local memory on your own device — your browser's RAM, the HTML5 Canvas rendering surface, and local IndexedDB/Blob storage. At no point in the ordinary operation of the Platform does your Source Material leave your device or reach a DevAsset Studio server.</p>
+      </div>
+      <p>4.1. <strong>No Backend Image Servers.</strong> DevAsset Studio does not operate, maintain, or route Source Material through any backend image-storage server. There is no server-side upload endpoint for screenshots, logos, or raw imagery in the ordinary course of the Platform's mockup, banner, icon, or ASO-generation functionality.</p>
+      <p>4.2. <strong>Zero Retention, Zero Review, Zero Model Training.</strong> DevAsset Studio does not retain copies of your Source Material after your session ends, does not view or manually inspect the content of your uploads, and does not use your Source Material, Generated Assets, or any derivative thereof to train, fine-tune, or evaluate any artificial intelligence or machine-learning model, whether operated by DevAsset Studio or any third party.</p>
+      <p>4.3. <strong>Verification Note.</strong> Because all processing described above occurs client-side, you may independently verify this architecture using your browser's own network-inspection tools (for example, the "Network" tab of your browser's developer console) to confirm that Source Material is not transmitted off-device during normal use of the mockup and export features.</p>
+    </section>
+
+    <!-- 5 -->
+    <section class="clause" id="s5">
+      <span class="clause-num">Section 5</span>
+      <h2 class="clause-title">Session Ephemerality &amp; Data Purge</h2>
+      <p>5.1. All canvas buffers, resized bitmaps, intermediate render layers, and generated Asset Bundles created during your session exist only for the duration of that session and are purged automatically upon the earliest of: (i) closing the browser tab or window running the Platform; (ii) clearing your browser cache, IndexedDB, or site data for the Platform's domain; or (iii) completion of your Asset Bundle download, where the Platform's implementation clears the in-memory buffer immediately following a successful export.</p>
+      <p>5.2. Because no server-side copy of your Source Material or Generated Assets is created under Section 4, DevAsset Studio has no ability to retrieve, restore, or reproduce your work product following such purge. <strong>You are solely responsible for downloading and independently backing up any Asset Bundle you wish to retain</strong> before closing your session.</p>
+      <p>5.3. Any browser-local persistence used by the Platform to support in-progress work (such as IndexedDB caching between page reloads within an active session) is used exclusively to preserve your own workflow continuity on your own device, and remains subject to erasure by you at any time through your browser's own site-data controls.</p>
+    </section>
+
+    <!-- 6 -->
+    <section class="clause" id="s6">
+      <span class="clause-num">Section 6</span>
+      <h2 class="clause-title">Intellectual Property &amp; Asset Ownership</h2>
+      <h3 class="sub-title">6.1 User Ownership of Generated Assets</h3>
+      <p>You retain one hundred percent (100%) exclusive intellectual property ownership, copyright, and commercial distribution rights over all screenshots, graphics, captions, ASO metadata, and branding assets you generate or export using DevAsset Studio, to the extent such Generated Assets incorporate your own Source Material, original text, or creative input. DevAsset Studio asserts no ownership claim, license-back right, or royalty interest in any Generated Asset or Asset Bundle you export.</p>
+      <h3 class="sub-title">6.2 Platform Proprietary Rights</h3>
+      <p>Notwithstanding Section 6.1, the underlying layout engine, mockup frame templates, device-bezel designs, UI design, export scripts, rendering pipeline, and source architecture of DevAsset Studio (collectively, the <strong>"Platform IP"</strong>) remain, at all times, the exclusive proprietary property of DevAsset Studio's developer, whether or not formally registered. Your ownership of a Generated Asset under Section 6.1 does not extend to, and does not grant you any license to redistribute, resell, or white-label, the underlying Platform IP (such as the mockup frame template itself, independent of the content you placed within it).</p>
+      <h3 class="sub-title">6.3 Restrictions</h3>
+      <p>You shall not: (i) reverse-engineer, disassemble, or decompile the Platform's client-side rendering scripts or export logic; (ii) engage in malicious scraping, automated harvesting, or bulk extraction of the Platform's templates, frame assets, or source code; or (iii) create or distribute an unauthorized white-label redistribution of the Platform, whether as a competing tool, a rebranded clone, or a bundled derivative service, without DevAsset Studio's prior written consent. A violation of this Section 6.3 constitutes a material breach entitling DevAsset Studio to pursue the remedies described in Section 13 and Section 17.</p>
+    </section>
+
+    <!-- 7 -->
+    <section class="clause" id="s7">
+      <span class="clause-num">Section 7</span>
+      <h2 class="clause-title">Store Compliance &amp; Accuracy Disclaimer</h2>
+      <p>7.1. DevAsset Studio provides formatting guidelines and export templates designed to align with publicly documented Google Play Console and Apple App Store submission standards as they are understood by the developer at the time of Platform design (including, for example, target resolutions such as 1080×1920 and standard aspect ratios such as 9:16 for screenshot frames).</p>
+      <div class="callout warn">
+        <span class="tag">No Approval Guarantee</span>
+        <p>DevAsset Studio <strong>does not guarantee</strong> app store approval, listing acceptance, search ranking, ASO performance, conversion uplift, or any other business outcome resulting from the use of a Generated Asset. Store submission standards, review guidelines, and ranking algorithms are determined and modified at the sole discretion of the relevant store operator (including Google LLC and Apple Inc.) and are wholly outside DevAsset Studio's control.</p>
+      </div>
+      <p>7.2. You are solely responsible for independently verifying, at the time of your actual store submission, that the current resolution, format, and content requirements of the relevant app store are satisfied, as such requirements are subject to change by the store operator without notice to DevAsset Studio.</p>
+    </section>
+
+    <!-- 8 -->
+    <section class="clause" id="s8">
+      <span class="clause-num">Section 8</span>
+      <h2 class="clause-title">Content Responsibility</h2>
+      <p>8.1. You assume one hundred percent (100%) sole responsibility for all text, claims, trademarks, brand names, logos, and imagery you embed, upload, or otherwise incorporate into your Generated Assets using the Platform, including responsibility for ensuring that such content does not infringe the intellectual property rights of any third party, does not make false or misleading claims, and complies with the metadata, trademark, and content policies of every Distribution Channel to which you submit it.</p>
+      <p>8.2. DevAsset Studio exercises no editorial control over, and does not review, moderate, or pre-screen, the content of any Source Material or Generated Asset, consistent with the Client-Side Processing architecture described in Section 4. Accordingly, DevAsset Studio bears no responsibility for infringing, unlawful, or policy-violating content embedded in a Generated Asset by a User.</p>
+    </section>
+
+    <!-- 9 -->
+    <section class="clause" id="s9">
+      <span class="clause-num">Section 9</span>
+      <h2 class="clause-title">Disclaimer of Warranties</h2>
+      <div class="callout warn">
+        <span class="tag">"As Is" / "As Available"</span>
+        <p>THE PLATFORM AND ALL GENERATED ASSETS ARE PROVIDED ON AN <strong>"AS IS"</strong> AND <strong>"AS AVAILABLE"</strong> BASIS, WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, DEVASSET STUDIO EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.</p>
+      </div>
+      <p>9.1. Without limiting the generality of the foregoing, DevAsset Studio does not warrant that: (i) the Platform will be uninterrupted, timely, or error-free; (ii) Generated Assets will render identically across all browsers, devices, or screen densities; (iii) any store submission prepared using a Generated Asset will be approved; or (iv) the Platform will be compatible with every browser version, operating system, or hardware configuration you may use.</p>
+      <p>9.2. You acknowledge that browser-based Client-Side Processing is inherently dependent on your own device's available memory and processing capacity, and that large Source Material files or high-volume batch exports may be affected by such local resource constraints, which are outside DevAsset Studio's control.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="clause" id="s10">
+      <span class="clause-num">Section 10</span>
+      <h2 class="clause-title">Limitation of Liability</h2>
+      <p>10.1. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL DEVASSET STUDIO, ITS DEVELOPER, OR ANY OF THEIR RESPECTIVE AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATING TO YOUR ACCESS TO OR USE OF THE PLATFORM.</p>
+      <p>10.2. Without limiting the generality of Section 10.1, DevAsset Studio shall bear no liability whatsoever for:</p>
+      <ol class="legal-list">
+        <li><strong>Store rejection</strong> of any app submission that used a Generated Asset, for any reason including non-compliance with store guidelines that were updated after the Generated Asset was produced;</li>
+        <li><strong>Metadata strikes, ranking penalties, or account suspension</strong> imposed by a store operator arising from ASO metadata or content authored by the User, irrespective of whether the Platform's suggestion tooling contributed to that metadata;</li>
+        <li><strong>Loss of business, revenue, or downloads</strong> allegedly resulting from the use, non-use, or performance of a Generated Asset;</li>
+        <li><strong>Loss of unsaved work product</strong> resulting from session ephemerality as described in Section 5, including where a User fails to download an Asset Bundle prior to closing their session or clearing browser data;</li>
+        <li><strong>Browser or device-level failures</strong>, including insufficient local memory, browser crashes, or incompatible browser versions, that interrupt Client-Side Processing.</li>
+      </ol>
+      <p>10.3. <strong>Aggregate Liability Cap.</strong> Notwithstanding anything to the contrary in this Policy, and to the extent liability cannot be lawfully disclaimed, DevAsset Studio's aggregate liability arising out of or relating to this Policy or the Platform shall not exceed the greater of (a) the amount, if any, actually paid by you to DevAsset Studio in the twelve (12) months preceding the event giving rise to the claim, or (b) five hundred Indian Rupees (₹500), it being acknowledged that the Platform is currently offered free of charge unless expressly stated otherwise.</p>
+      <p>10.4. Nothing in this Section 10 shall exclude or limit liability that cannot lawfully be excluded under the laws of India, including liability for death or personal injury caused by proven gross negligence, or liability for fraud or fraudulent misrepresentation.</p>
+    </section>
+
+    <!-- 11 -->
+    <section class="clause" id="s11">
+      <span class="clause-num">Section 11</span>
+      <h2 class="clause-title">Limited Data We Do Collect</h2>
+      <p>11.1. Consistent with Section 4, DevAsset Studio does not silently or passively collect any Personal Data through its local file-processing functionality — no Source Material, Generated Asset, or Asset Bundle content is transmitted to, or logged by, any DevAsset Studio server.</p>
+      <p>11.2. The only Personal Data DevAsset Studio may process is data you affirmatively and voluntarily choose to submit through a support, feedback, or bug-report channel (for example, by emailing the Grievance Officer under Section 18), which may include your name, email address, and the content of your message. Such data is processed solely for the purpose of responding to your query, and is retained only for as long as reasonably necessary to resolve the relevant support matter, after which it is deleted or anonymized.</p>
+      <p>11.3. The Platform's hosting infrastructure may, as is standard for any web server, log minimal, non-identifying technical request data (such as browser type and request timestamp) strictly for operational integrity and abuse-prevention purposes; such logs are not linked to your Source Material or Generated Assets and are not used to build an individual usage profile.</p>
+      <div class="pipeline">
+        <div class="step"><span class="n">01 — Upload</span><strong>Local only</strong>Source Material loads into browser RAM / Canvas.</div>
+        <div class="step"><span class="n">02 — Render</span><strong>Client-side</strong>Mockups, icons, banners built in-memory on your device.</div>
+        <div class="step"><span class="n">03 — Export</span><strong>Your download</strong>Asset Bundle packaged and sent to your device only.</div>
+        <div class="step"><span class="n">04 — Purge</span><strong>Automatic</strong>Buffers cleared on tab close, cache clear, or export completion.</div>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section class="clause" id="s12">
+      <span class="clause-num">Section 12</span>
+      <h2 class="clause-title">Your Rights Under the DPDP Act</h2>
+      <p>12.1. In respect of the limited Personal Data described in Section 11.2 (support, feedback, or bug-report communications), you have the following rights as a Data Principal under the DPDPA:</p>
+      <ol class="legal-list">
+        <li><strong>Right to Information</strong> — to obtain a summary of the Personal Data we hold about you in connection with your support communications;</li>
+        <li><strong>Right to Correction</strong> — to request correction of inaccurate or incomplete Personal Data you have submitted;</li>
+        <li><strong>Right to Erasure</strong> — to request deletion of your support/feedback communications and any associated Personal Data, where it is no longer necessary for the purpose for which it was collected;</li>
+        <li><strong>Right to Grievance Redressal</strong> — to have any complaint regarding the processing of your Personal Data addressed by the Grievance Officer under Section 18;</li>
+        <li><strong>Right to Withdraw Consent</strong> — to withdraw consent to any ongoing correspondence at any time, without affecting the lawfulness of processing prior to withdrawal.</li>
+      </ol>
+      <p>12.2. <strong>Absolute Clarity on Silent Collection.</strong> DevAsset Studio confirms, without qualification, that no Personal Data is collected silently, passively, or without your affirmative action through the Platform's local file-processing, mockup-generation, or export functionality. The only path by which Personal Data reaches DevAsset Studio is your voluntary submission of a support, feedback, or bug-report communication as described in Section 11.2.</p>
+      <p>12.3. To exercise any right above, submit a written request to the Grievance Officer at the email address specified in Section 18, describing the support communication in question with sufficient detail (approximate date and subject) to allow it to be located.</p>
+    </section>
+
+    <!-- 13 -->
+    <section class="clause" id="s13">
+      <span class="clause-num">Section 13</span>
+      <h2 class="clause-title">Prohibited Conduct</h2>
+      <p>13.1. In addition to the restrictions in Section 6.3, you shall not use the Platform to: (i) generate assets that are unlawful, defamatory, obscene, or infringing of a third party's intellectual property; (ii) attempt to circumvent, overload, or disrupt the Platform's client-side rendering engine or hosting infrastructure, including through automated scripting or denial-of-service activity; (iii) misrepresent a Generated Asset as having been produced, endorsed, or certified by a specific app store operator; or (iv) use the Platform in any manner that violates applicable Indian law, including the Copyright Act, 1957, or the Trade Marks Act, 1999.</p>
+      <p>13.2. A violation of this Section 13 constitutes a material breach of this Policy and may result in restriction of your access to the Platform and pursuit of civil or criminal remedies available under applicable Indian law.</p>
+    </section>
+
+    <!-- 14 -->
+    <section class="clause" id="s14">
+      <span class="clause-num">Section 14</span>
+      <h2 class="clause-title">Indemnification</h2>
+      <p>14.1. You agree to indemnify, defend, and hold harmless DevAsset Studio, parent studio TarkStudio, lead developer Brijesh, and their respective successors and assigns, from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or in any way connected with: (a) your violation of this Policy; (b) any Generated Asset you create, including any claim that its content infringes a third party's intellectual property or trademark rights, as contemplated under Section 8; (c) your violation of any applicable law or the rights of any third party in connection with your use of the Platform; or (d) your engagement in any Prohibited Conduct described in Section 13.</p>
+      <p>14.2. DevAsset Studio reserves the right, at its own expense, to assume the exclusive defense and control of any matter otherwise subject to indemnification by you, in which event you agree to cooperate with DevAsset Studio's defense of such claim.</p>
+    </section>
+
+    <!-- 15 -->
+    <section class="clause" id="s15">
+      <span class="clause-num">Section 15</span>
+      <h2 class="clause-title">Term, Suspension &amp; Termination</h2>
+      <p>15.1. This Policy takes effect on the Effective Date and continues to apply for as long as you use the Platform, until terminated in accordance with this Section.</p>
+      <p>15.2. DevAsset Studio reserves the right, at its sole discretion, to suspend or restrict your access to the Platform where necessary to protect the security or integrity of the Platform or to address a reasonably suspected violation of this Policy.</p>
+      <p>15.3. You may discontinue your use of the Platform at any time. Termination does not extinguish any accrued rights or liabilities, including your obligations under Sections 6, 8, 10, 13, and 14, which shall survive termination, together with Sections 16, 17, and 20 (Miscellaneous).</p>
+    </section>
+
+    <!-- 16 -->
+    <section class="clause" id="s16">
+      <span class="clause-num">Section 16</span>
+      <h2 class="clause-title">Governing Law &amp; Jurisdiction</h2>
+      <p>16.1. This Policy, and any dispute or claim arising out of or in connection with it (including non-contractual disputes or claims), shall be governed by and construed in accordance with the laws of India, without regard to conflict-of-laws principles.</p>
+      <p>16.2. Subject to Section 17 below, the courts situated in <strong>Lucknow, Uttar Pradesh, India</strong> shall have exclusive jurisdiction to adjudicate any dispute arising out of or in connection with this Policy, and you irrevocably submit to the exclusive jurisdiction of such courts.</p>
+    </section>
+
+    <!-- 17 -->
+    <section class="clause" id="s17">
+      <span class="clause-num">Section 17</span>
+      <h2 class="clause-title">Dispute Resolution</h2>
+      <p>17.1. <strong>Good-Faith Negotiation.</strong> In the event of any dispute arising out of or relating to this Policy, the parties shall first attempt in good faith to resolve the matter through direct negotiation, by the complaining party providing written notice of the dispute to the Grievance Officer described in Section 18, with a reasonable opportunity (not less than thirty (30) days) to resolve the matter before escalating further.</p>
+      <p>17.2. <strong>Arbitration.</strong> If a dispute is not resolved through negotiation within the period specified in Section 17.1, either party may refer the dispute to arbitration by a sole arbitrator, mutually appointed, to be conducted in Lucknow, Uttar Pradesh, India, in the English language, in accordance with the Arbitration and Conciliation Act, 1996 (as amended). The arbitral award shall be final and binding on the parties, subject to any right of appeal available under applicable law.</p>
+      <p>17.3. Nothing in this Section 17 shall prevent either party from seeking urgent interim or injunctive relief from a court of competent jurisdiction where necessary to prevent irreparable harm, including in connection with intellectual property infringement under Section 6.</p>
+    </section>
+
+    <!-- 18 -->
+    <section class="clause" id="s18">
+      <span class="clause-num">Section 18</span>
+      <h2 class="clause-title">Statutory Grievance Redressal Mechanism</h2>
+      <p>18.1. In accordance with Rule 3(2) of the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 and the grievance redressal obligations applicable to a Data Fiduciary under the DPDPA, DevAsset Studio has designated a Grievance Officer to receive and resolve complaints from Users.</p>
+      <div class="grievance-card">
+        <dl>
+          <dt>Parent Studio</dt><dd>TarkStudio</dd>
+          <dt>Product</dt><dd>DevAsset Studio</dd>
+          <dt>Lead Developer</dt><dd>Brijesh</dd>
+          <dt>Grievance Officer</dt><dd>Brijesh — Lead Developer &amp; Operator, TarkStudio</dd>
+          <dt>Contact Email</dt><dd><a href="mailto:gyancom360@gmail.com">gyancom360@gmail.com</a></dd>
+          <dt>Location</dt><dd>Lucknow, Uttar Pradesh, India</dd>
+          <dt>Acknowledgment SLA</dt><dd>Within forty-eight (48) hours of receipt</dd>
+          <dt>Resolution SLA</dt><dd>Within thirty (30) days of receipt, as required under applicable statutory timelines</dd>
+        </dl>
+      </div>
+      <p style="margin-top:22px;">18.2. Complaints or grievances may include, without limitation: requests for correction or deletion of Personal Data submitted through a support communication (see Section 12.3), reports of a violation of Section 6 or Section 13, disputes regarding the Platform's data-processing architecture, or any other grievance arising in connection with this Policy.</p>
+      <p>18.3. All grievances shall be submitted in writing to the email address specified above, with sufficient detail to enable the Grievance Officer to investigate and address the complaint. The Grievance Officer shall acknowledge receipt within forty-eight (48) hours and shall use best efforts to resolve the grievance within thirty (30) days of receipt, communicating an interim status update where additional time is genuinely required for investigation.</p>
+      <p>18.4. Where you remain dissatisfied with the resolution provided, you retain the right to escalate the matter to the appropriate authority under the DPDPA (including the Data Protection Board of India once constituted and operational) or to pursue the dispute resolution mechanism described in Section 17.</p>
+    </section>
+
+    <!-- 19 -->
+    <section class="clause" id="s19">
+      <span class="clause-num">Section 19</span>
+      <h2 class="clause-title">Amendments to This Policy</h2>
+      <p>19.1. DevAsset Studio reserves the right to amend, update, or revise this Policy at any time, in its sole discretion, to reflect changes in the Platform's functionality, applicable law, or industry practice. The "Effective Date" and "Version" indicators at the top of this Policy shall be updated to reflect the date of the most recent revision.</p>
+      <p>19.2. Where an amendment is material — meaning it substantially changes the Platform's data-processing architecture (including any departure from the Client-Side Processing guarantee in Section 4), or materially reduces your rights — DevAsset Studio shall provide reasonably prominent notice of such change on the Platform prior to, or promptly following, the change taking effect. Your continued use of the Platform following the posting of an amended Policy constitutes your acceptance of the revised terms.</p>
+    </section>
+
+    <!-- 20 -->
+    <section class="clause" id="s20">
+      <span class="clause-num">Section 20</span>
+      <h2 class="clause-title">Miscellaneous Provisions</h2>
+      <p>20.1. <strong>Entire Agreement.</strong> This Policy constitutes the entire agreement between you and DevAsset Studio with respect to the subject matter hereof, and supersedes all prior or contemporaneous understandings, agreements, representations, and warranties, whether written or oral.</p>
+      <p>20.2. <strong>Severability.</strong> If any provision of this Policy is held by a court or arbitral tribunal of competent jurisdiction to be invalid, illegal, or unenforceable, such provision shall be modified to the minimum extent necessary to make it enforceable, or severed if it cannot be so modified, and the remaining provisions shall continue in full force and effect.</p>
+      <p>20.3. <strong>No Waiver.</strong> No failure or delay by DevAsset Studio in exercising any right, power, or remedy under this Policy shall operate as a waiver thereof.</p>
+      <p>20.4. <strong>Assignment.</strong> You may not assign or transfer any of your rights or obligations under this Policy without DevAsset Studio's prior written consent. DevAsset Studio may freely assign this Policy in connection with a merger, acquisition, corporate reorganization, or sale of assets.</p>
+      <p>20.5. <strong>Force Majeure.</strong> DevAsset Studio shall not be liable for any failure or delay in performance resulting from causes beyond its reasonable control, including acts of God, natural disaster, internet or telecommunications failures, or failures of third-party hosting or CDN infrastructure.</p>
+      <p>20.6. <strong>Relationship of Parties.</strong> Nothing in this Policy shall be construed as creating any agency, partnership, joint venture, or employment relationship between you and DevAsset Studio.</p>
+      <p>20.7. <strong>Electronic Record.</strong> This Policy is an electronic record published in accordance with the Information Technology Act, 2000 and the rules made thereunder, and does not require any physical or digital signature to be valid and binding.</p>
+      <p>20.8. <strong>Notices.</strong> Any notice required to be given by you to DevAsset Studio under this Policy shall be sent in writing to the email address specified in Section 21. DevAsset Studio may provide notices to you by posting on the Platform, effective upon posting.</p>
+    </section>
+
+    <!-- 21 -->
+    <section class="clause" id="s21">
+      <span class="clause-num">Section 21</span>
+      <h2 class="clause-title">Contact Information</h2>
+      <p>For any questions regarding this Policy, requests concerning your Personal Data, intellectual property concerns, or any other matter relating to the Platform, please contact:</p>
+      <div class="grievance-card">
+        <dl>
+          <dt>Parent Studio</dt><dd><a href="https://tarkstudio.github.io/TarkStudio/" target="_blank" rel="noopener noreferrer" style="color:#818cf8; text-decoration:underline;">TarkStudio</a></dd>
+          <dt>Product</dt><dd>DevAsset Studio</dd>
+          <dt>Lead Developer</dt><dd>Brijesh</dd>
+          <dt>Email</dt><dd><a href="mailto:gyancom360@gmail.com">gyancom360@gmail.com</a></dd>
+          <dt>Location</dt><dd>Lucknow, Uttar Pradesh, India</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 22 -->
+    <section class="clause" id="s22">
+      <span class="clause-num">Section 22</span>
+      <h2 class="clause-title">Third-Party Trademarks &amp; Nominative Fair Use Disclaimer</h2>
+      <p>22.1. Google Play and Android are registered trademarks of Google LLC.</p>
+      <p>22.2. Apple, App Store, and macOS are registered trademarks of Apple Inc.</p>
+      <p>22.3. Samsung Galaxy Store and One UI are registered trademarks of Samsung Electronics Co., Ltd.</p>
+      <p>22.4. Amazon, Amazon Appstore, and Fire OS are registered trademarks of Amazon.com, Inc. or its affiliates.</p>
+      <p>22.5. <strong>Independent Status:</strong> DevAsset Studio and parent entity TarkStudio are entirely independent software projects operated by Brijesh. DevAsset Studio is not affiliated with, authorized by, sponsored by, or endorsed by Google LLC, Apple Inc., Samsung Electronics Co., Ltd., Amazon.com, Inc., or any of their respective affiliates. All references to specific third-party store platforms, dimensions, and specifications are used strictly for technical compatibility identification and nominative fair-use purposes under applicable trademark laws.</p>
+      <footer class="doc-footer">
+        <p>This Privacy Policy &amp; Terms of Service was last updated on the Effective Date indicated at the top of this document (September 19, 2026). DevAsset Studio recommends periodic review of this page for any updates. This document has been prepared to reflect the operational architecture described by the developer and general principles of Indian and international data-protection and technology law.</p>
+      </footer>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>
