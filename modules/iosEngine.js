@@ -225,6 +225,21 @@
     }
 
     if (suiteGrid && Object.keys(state.appIconBlobs).length > 0) {
+      const retinaPreviewMap = {
+        'ios-retina-home-preview': 'AppIcon-60x60@3x.png',
+        'ios-retina-spotlight-preview': 'AppIcon-40x40@3x.png',
+        'ios-retina-settings-preview': 'AppIcon-29x29@3x.png',
+        'ios-retina-ipad-preview': 'AppIcon-83.5x83.5@2x.png'
+      };
+      Object.entries(retinaPreviewMap).forEach(([previewId, filename]) => {
+        const preview = document.getElementById(previewId);
+        const item = state.appIconBlobs[filename];
+        if (preview && item) {
+          preview.src = item.dataUrl;
+          preview.classList.remove('hidden');
+        }
+      });
+
       suiteGrid.innerHTML = '';
       const displaySpecs = IOS_SPECS.filter((s, idx) => idx < 8); // Top 8 prominent icons
       displaySpecs.forEach(spec => {
@@ -701,6 +716,7 @@ Note: Transparency has been 100% flattened to 0% alpha to guarantee rejection-fr
     processIosMaster,
     exportIosZip,
     renderIosMockup,
+    generateContentsJson,
     getContentsJson: generateContentsJson,
     initIosUi
   };

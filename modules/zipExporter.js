@@ -1054,13 +1054,13 @@
             hasIosIcons = true;
             const iconFolder = zip.folder('AppIcon.appiconset');
             const contentsJson = iosEngine.generateContentsJson();
-            iconFolder.file('Contents.json', JSON.stringify(contentsJson, null, 2));
+            iconFolder.file('Contents.json', contentsJson);
             packagedCount++;
 
             Object.keys(iosEngine.state.appIconBlobs).forEach(name => {
               const b = iosEngine.state.appIconBlobs[name];
               if (b) {
-                iconFolder.file(name, b);
+                iconFolder.file(name, b.blob);
                 packagedCount++;
               }
             });
