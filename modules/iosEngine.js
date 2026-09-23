@@ -224,13 +224,13 @@
       alphaBadge.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i><span>0% Alpha (Flattened for App Store Connect)</span>`;
     }
 
-    if (suiteGrid && Object.keys(state.appIconBlobs).length > 0) {
-      const retinaPreviewMap = {
-        'ios-retina-home-preview': 'AppIcon-60x60@3x.png',
-        'ios-retina-spotlight-preview': 'AppIcon-40x40@3x.png',
-        'ios-retina-settings-preview': 'AppIcon-29x29@3x.png',
-        'ios-retina-ipad-preview': 'AppIcon-83.5x83.5@2x.png'
-      };
+    const retinaPreviewMap = {
+      'ios-retina-home-preview': 'AppIcon-60x60@3x.png',
+      'ios-retina-spotlight-preview': 'AppIcon-40x40@3x.png',
+      'ios-retina-settings-preview': 'AppIcon-29x29@3x.png',
+      'ios-retina-ipad-preview': 'AppIcon-83.5x83.5@2x.png'
+    };
+    if (Object.keys(state.appIconBlobs).length > 0) {
       Object.entries(retinaPreviewMap).forEach(([previewId, filename]) => {
         const preview = document.getElementById(previewId);
         const item = state.appIconBlobs[filename];
@@ -239,7 +239,9 @@
           preview.classList.remove('hidden');
         }
       });
+    }
 
+    if (suiteGrid && Object.keys(state.appIconBlobs).length > 0) {
       suiteGrid.innerHTML = '';
       const displaySpecs = IOS_SPECS.filter((s, idx) => idx < 8); // Top 8 prominent icons
       displaySpecs.forEach(spec => {

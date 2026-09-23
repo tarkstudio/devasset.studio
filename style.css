@@ -269,6 +269,23 @@ details#screen-advanced-details[open] summary {
   aspect-ratio: 1 / 1;
 }
 
+.ios-retina-card {
+  min-height: 148px;
+  overflow: hidden;
+}
+
+.ios-retina-preview {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 8px;
+  display: block;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgb(255 255 255 / 10%);
+  box-shadow: 0 8px 16px rgb(0 0 0 / 20%);
+}
+
 #dropzone-preview {
   min-height: 120px;
 }
